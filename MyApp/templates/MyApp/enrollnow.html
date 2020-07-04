@@ -1,0 +1,52 @@
+{% extends 'MyApp/basic.html' %}
+{% block title %}Enroll Now{% endblock %}
+{% block style %}{% endblock %}
+{% block body %}
+<form method="POST" action="/MyApp/enrollnow/" class="py-5 m-auto" style="max-width: 500px;">{% csrf_token %}
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+        </div>
+      </div>
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="phone" class="col-sm-2 col-form-label">Number</label>
+      <div class="col-sm-10">
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="city" class="col-sm-2 col-form-label">City</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city name.">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_id" class="col-sm-2 col-form-label">Course Id</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="course_id" name="course_id" placeholder="Enter course id in which you want to apply.">
+        </div>
+      </div>
+   
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </form>
+
+
+{% endblock %}
+{% block js %}
+{% if thank %}
+<script>
+alert('Thanks to enroll at Pre To Pro. Your roll no is {{ID}}')
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends 'MyApp/basic.html' %}
+{% block title %}Pre To Pro{% endblock %}
+{% block style %}
+    <style>
+     .carousel-item>img{
+         max-height: 600px;
+     }  
+     .jumbotron{
+         margin-bottom: -3em;
+     } 
+    </style>
+
+{% endblock %}
+{% block body %}
+  <!-- carousel -->
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        {% load static %}
+        <img src="{% static 'MyApp/programming.png' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'MyApp/programming2.jpeg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'MyApp/programming3.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+<!-- About Us -->
+<div id="about" style="background-color: whitesmoke;" class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class=" text-center">About Us</h1>
+      <p class="lead text-justify">This is a modified jumbotron that occupies the entire horizontal space of its parent Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nobis similique sequi, ipsam nostrum nesciunt, earum expedita dignissimos iure, error sunt autem. Fugit quasi culpa ipsum ducimus molestiae dolores dolore! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum placeat assumenda aspernatur eius ducimus fuga laudantium repellat quos nemo quidem, error sint praesentium dolores impedit culpa suscipit consectetur illo ad.</p>
+    </div>
+  </div>
+
+  <!-- Instructors -->
+  <main  style="background-color: whitesmoke;" id="instructors" role="main">
+  
+    <div class="container">
+      <!-- Example row of columns -->
+      <h1 class="text-center py-5">Instructors</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="m-auto text-center">
+            <img src="{% static 'MyApp/daniyal.jpg' %}" style="width: 230px;height: 230px;border-radius: 50%;" alt="Daniyal">
+          </div>
+            <h4>Syed Muhammad Daniyal</h4>
+          <p class="text-justify">A client side and server side web developer. Skilled in Python Programming Language, Django, HTML5, CSS3, Bootstrap, JavaScript. Experienced in teaching things about technology.</p>
+         
+        </div>
+        <div class="col-md-4">
+          <div  class="m-auto text-center">
+            <img src="{% static 'MyApp/nameer.jpeg' %}" style="width: 230px;height: 230px;border-radius: 50%;" alt="Nameer">
+          </div>
+            <h4>Muhammad Nameer</h4>
+          <p class="text-justify">Frontend web developer have experience in Web designing and Graphic designing. Having teaching of 4 years.</p>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="m-auto text-center">
+            <img src="{% static 'MyApp/ushna.png' %}" style="width: 230px;height: 230px;border-radius: 50%;" alt="Ushna">
+          </div>
+            <h4>Ushna Karim</h4>
+          <p class="text-justify">A front-end web developer, skilled in web designing and Microsoft office. Good and friendly teaching style.</p>
+          
+        </div>
+      </div>
+  
+    </div> <!-- /container -->
+  
+  </main>
+
+  <!-- Courses -->
+  <main  role="main">
+
+   
+  
+    <div style="background-color: whitesmoke !important;" class="album py-5 bg-light">
+      <div id="courses" class="container">
+        <h1 class="text-center mb-5">Courses We Offer</h1>
+  
+        <div class="row">
+{% for i in course %}
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" src="/media/{{i.course_img}}" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"/>
+              <div class="card-body">
+                <h3>{{i.course_title}}</h3>
+                <p class="card-text text-justify">{{i.course_desc}}</p>
+                <p><b>Course Id: {{i.course_id}}</b></p>
+                <p><b>Fee: {{i.course_fee}}</b></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="/MyApp/courseview/{{i.course_id}}"><button type="button" class="btn btn-sm btn-outline-secondary">View Course</button></a>
+                  </div>
+                  <small class="text-muted"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {% if forloop.counter|divisibleby:3 %}
+        </div><div class="row">
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  
+  </main>
+
+
+
+  <footer style="min-height: 200px;background-color: rgb(48, 46, 46);" class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text my-4" style="color: white;">Pre To Pro</h5>
+          <p class="grey-text text-lighten-4" style="color: white;">Feel free to contact us any time.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text my-4" style="color: white;">Useful Links</h5>
+          <ul>
+            <p><li><a class="grey-text text-lighten-3" href="https://mail.google.com/mail/?view=cm&fs=1&to=pretopro3@gmail.com" style="color: white;text-decoration: none;">pretopro3@gmail.com</a></li></p>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+   
+  </footer>
+  <div style="background-color: rgb(117,117,117);" class="footer-copyright text-center">
+    <div class="container" style="color: white;">
+    Developed By Syed Muhammad Daniyal
+   
+    </div>
+  </div> 
+{% endblock %}
